@@ -1,5 +1,7 @@
 package backend.spring.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -7,12 +9,13 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
+@JsonIgnoreProperties
 public class UserModel implements Serializable {
 
     private static long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private String id;
     private String namaDepan;
     private String namaBelakang;
     private String alamatUser;
@@ -28,16 +31,7 @@ public class UserModel implements Serializable {
     public static void setSerialVersionUID(long serialVersionUID) {
         UserModel.serialVersionUID = serialVersionUID;
     }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getNamaDepan() {
+        public String getNamaDepan() {
         return namaDepan;
     }
 
@@ -91,5 +85,13 @@ public class UserModel implements Serializable {
 
     public void setFotoUser(String fotoUser) {
         this.fotoUser = fotoUser;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 }
