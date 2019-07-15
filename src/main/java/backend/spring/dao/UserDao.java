@@ -11,7 +11,7 @@ public interface UserDao {
 
     public void SaveOrUpdateUser(UserModel k);
 
-    public void deleteUser(long id);
+    public void deleteUser(String id);
 
     public void deleteUser(UserModel d);
 }

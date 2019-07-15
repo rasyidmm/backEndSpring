@@ -28,16 +28,19 @@ public class UserService implements UserDao {
 
     @Override
     public void SaveOrUpdateUser(UserModel k) {
+        repoFac.getUserRepository().save(k);
 
     }
 
     @Override
-    public void deleteUser(long id) {
+    public void deleteUser(String id) {
+        repoFac.getUserRepository().deleteById(id);
 
     }
 
     @Override
     public void deleteUser(UserModel d) {
+        repoFac.getUserRepository().delete(d);
 
     }
 }
