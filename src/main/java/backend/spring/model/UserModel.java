@@ -1,23 +1,25 @@
 package backend.spring.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import java.io.Serializable;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 @JsonIgnoreProperties
 public class UserModel implements Serializable {
 
+    @JsonIgnore
+    @OneToOne
+    private LoginModel loginModel;
+
     private static long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private String id;
-    private String namaDepan;
-    private String namaBelakang;
+    private String namaDepanUser;
+    private String namaBelakangUser;
     private String alamatUser;
     private String noHpUser;
     private String agamaUser;
@@ -31,20 +33,38 @@ public class UserModel implements Serializable {
     public static void setSerialVersionUID(long serialVersionUID) {
         UserModel.serialVersionUID = serialVersionUID;
     }
-        public String getNamaDepan() {
-        return namaDepan;
+
+
+    public LoginModel getLoginModel() {
+        return loginModel;
     }
 
-    public void setNamaDepan(String namaDepan) {
-        this.namaDepan = namaDepan;
+    public void setLoginModel(LoginModel loginModel) {
+        this.loginModel = loginModel;
     }
 
-    public String getNamaBelakang() {
-        return namaBelakang;
+    public String getId() {
+        return id;
     }
 
-    public void setNamaBelakang(String namaBelakang) {
-        this.namaBelakang = namaBelakang;
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getNamaDepanUser() {
+        return namaDepanUser;
+    }
+
+    public void setNamaDepanUser(String namaDepanUser) {
+        this.namaDepanUser = namaDepanUser;
+    }
+
+    public String getNamaBelakangUser() {
+        return namaBelakangUser;
+    }
+
+    public void setNamaBelakangUser(String namaBelakangUser) {
+        this.namaBelakangUser = namaBelakangUser;
     }
 
     public String getAlamatUser() {
@@ -85,13 +105,5 @@ public class UserModel implements Serializable {
 
     public void setFotoUser(String fotoUser) {
         this.fotoUser = fotoUser;
-    }
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
     }
 }
