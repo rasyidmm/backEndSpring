@@ -1,15 +1,22 @@
 package backend.spring.factory;
 
-import backend.spring.service.UserService;
+import backend.spring.model.MasukModel;
+import backend.spring.service.MasukService;
+import backend.spring.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class ServiceFac {
     @Autowired
-    UserService userService;
+    MemberService memberService;
+    @Autowired
+    MasukService masukService;
 
-    public UserService getUserService() {
-        return userService;
+    public MemberService getMemberService() {
+        return memberService;
+    }
+    public MasukService getMasukService(){
+        return masukService;
     }
 }

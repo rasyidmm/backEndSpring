@@ -1,6 +1,7 @@
 package backend.spring.factory;
 
-import backend.spring.repository.UserRepository;
+import backend.spring.repository.MasukRepostory;
+import backend.spring.repository.MemberRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -8,9 +9,14 @@ import org.springframework.stereotype.Component;
 public class RepoFac {
 
     @Autowired
-    UserRepository userRepository;
+    MemberRepository memberRepository;
+    @Autowired
+    MasukRepostory masukRepostory;
 
-    public UserRepository getUserRepository() {
-        return userRepository;
+    public MemberRepository getMemberRepository() {
+        return memberRepository;
+    }
+    public MasukRepostory getMasukRepostory(){
+        return masukRepostory;
     }
 }

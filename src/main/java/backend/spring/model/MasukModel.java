@@ -1,30 +1,32 @@
 package backend.spring.model;
 
 import backend.spring.constants.TableConstants;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
 import java.io.Serializable;
 @Entity
-@JsonIgnoreProperties
-public class LoginModel  implements Serializable {
+//@JsonIgnoreProperties
+@Table(name = TableConstants.TABLE_LOGIN_MODEL)
+public class MasukModel implements Serializable {
     private static long serialVersionUID = 1L;
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = TableConstants.COLUMN_ID)
     private String id;
+    @Column(name = TableConstants.COLUMN_USERNAME_LOGIN)
     private String usernameLogin;
+    @Column(name = TableConstants.COLUMN_PASSWORD_LOGIN)
     private String passwordLogin;
-    @JsonIgnore
     @OneToOne
-    private UserModel userModel;
+    private MemeberModel memeberModel;
 
     public static long getSerialVersionUID() {
         return serialVersionUID;
     }
 
     public static void setSerialVersionUID(long serialVersionUID) {
-        LoginModel.serialVersionUID = serialVersionUID;
+        MasukModel.serialVersionUID = serialVersionUID;
     }
 
     public String getId() {
@@ -51,11 +53,12 @@ public class LoginModel  implements Serializable {
         this.passwordLogin = passwordLogin;
     }
 
-    public UserModel getUserModel() {
-        return userModel;
+
+    public MemeberModel getMemeberModel() {
+        return memeberModel;
     }
 
-    public void setUserModel(UserModel userModel) {
-        this.userModel = userModel;
+    public void setMemeberModel(MemeberModel memeberModel) {
+        this.memeberModel = memeberModel;
     }
 }
