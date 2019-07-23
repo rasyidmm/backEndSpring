@@ -2,6 +2,8 @@ package backend.spring.security;
 
 
 
+import backend.spring.factory.ServiceFac;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
@@ -14,6 +16,10 @@ import java.io.IOException;
 
 @Component
 public class JwtRequestFilter extends OncePerRequestFilter {
+    @Autowired
+    ServiceFac serviceFac;
+    @Autowired
+    JwtTokenUtil jwtTokenUtil;
 
 
     @Override
