@@ -7,7 +7,7 @@ import javax.persistence.*;
 import java.io.Serializable;
 @Entity
 //@JsonIgnoreProperties
-@Table(name = TableConstants.TABLE_LOGIN_MODEL)
+//@Table(name = TableConstants.TABLE_LOGIN_MODEL)
 public class MasukModel implements Serializable {
     private static long serialVersionUID = 1L;
     @Id

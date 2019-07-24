@@ -2,6 +2,7 @@ package backend.spring.config;
 
 
 
+
 import backend.spring.security.JwtAuthenticationEntryPoint;
 import backend.spring.security.JwtRequestFilter;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,7 +27,6 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     private JwtAuthenticationEntryPoint jwtAuthenticationEntryPoint;
-
     private UserDetailsService jwtUserDetailsService;
 
     @Autowired
@@ -41,7 +41,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Bean
     public PasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder();
+        PasswordEncoder encoder =  new BCryptPasswordEncoder();
+        return encoder;
+//        return new BCryptPasswordEncoder();
     }
 
     @Bean

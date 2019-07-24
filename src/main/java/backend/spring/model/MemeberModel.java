@@ -7,8 +7,8 @@ import java.io.Serializable;
 import javax.persistence.*;
 
 @Entity
-@JsonIgnoreProperties
-@Table(name = TableConstants.TABLE_USER_MODEL)
+//@JsonIgnoreProperties
+//@Table(name = TableConstants.TABLE_USER_MODEL)
 public class MemeberModel implements Serializable {
 
     private static long serialVersionUID = 1L;

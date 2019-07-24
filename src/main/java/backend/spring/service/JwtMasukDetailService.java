@@ -17,6 +17,7 @@ public class JwtMasukDetailService implements UserDetailsService {
 
     @Autowired
     private ServiceFac serviceFac;
+    @Autowired
     private PasswordEncoder bcryptEncoder;
 
     @Override
