@@ -1,7 +1,6 @@
 package backend.spring.model;
 
 import backend.spring.constants.TableConstants;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -13,7 +12,7 @@ public class MasukModel implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = TableConstants.COLUMN_ID)
-    private String id;
+    private Long id;
     @Column(name = TableConstants.COLUMN_USERNAME_LOGIN)
     private String usernameLogin;
     @Column(name = TableConstants.COLUMN_PASSWORD_LOGIN)
@@ -29,13 +28,7 @@ public class MasukModel implements Serializable {
         MasukModel.serialVersionUID = serialVersionUID;
     }
 
-    public String getId() {
-        return id;
-    }
 
-    public void setId(String id) {
-        this.id = id;
-    }
 
     public String getUsernameLogin() {
         return usernameLogin;
@@ -60,5 +53,14 @@ public class MasukModel implements Serializable {
 
     public void setMemeberModel(MemeberModel memeberModel) {
         this.memeberModel = memeberModel;
+    }
+
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 }

@@ -21,7 +21,7 @@ public class MemberService implements MemberDao {
     }
 
     @Override
-    public MemeberModel getMemberById(String id) {
+    public MemeberModel getMemberById(Long id) {
        MemeberModel dm = repoFac.getMemberRepository().findById(id).get();
        return dm;
     }
@@ -33,7 +33,7 @@ public class MemberService implements MemberDao {
     }
 
     @Override
-    public void deleteMember(String id) {
+    public void deleteMember(Long id) {
         repoFac.getMemberRepository().deleteById(id);
 
     }

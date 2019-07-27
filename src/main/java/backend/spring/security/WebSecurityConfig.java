@@ -1,10 +1,5 @@
-package backend.spring.config;
+package backend.spring.security;
 
-
-
-
-import backend.spring.security.JwtAuthenticationEntryPoint;
-import backend.spring.security.JwtRequestFilter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -27,24 +22,38 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     private JwtAuthenticationEntryPoint jwtAuthenticationEntryPoint;
-    private UserDetailsService jwtUserDetailsService;
 
-    @Autowired
+    private  UserDetailsService jwtUserDetailsService;
+
+     @Autowired
     private JwtRequestFilter jwtRequestFilter;
+
+
+
+
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
         // configure AuthenticationManager so that it knows from where to load
         // user for matching credentials
         // Use BCryptPasswordEncoder
-        auth.userDetailsService(jwtUserDetailsService).passwordEncoder(passwordEncoder());
-    }
 
+//        auth.userDetailsService(jwtUserDetailsService).passwordEncoder(passwordEncode());
+//        auth
+//                .userDetailsService(jwtUserDetailsService)
+//                .passwordEncoder(passwordEncode());
+    }
     @Bean
-    public PasswordEncoder passwordEncoder() {
+    PasswordEncoder passwordEncode() {
         PasswordEncoder encoder =  new BCryptPasswordEncoder();
         return encoder;
-//        return new BCryptPasswordEncoder();
     }
+//
+//    @Bean
+//    public PasswordEncoder passwordEncode() {
+//        PasswordEncoder encoder =  new BCryptPasswordEncoder();
+//        return encoder;
+////        return new BCryptPasswordEncoder();
+//    }
 
     @Bean
     @Override
@@ -57,12 +66,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         // We don't need CSRF for this example
         httpSecurity.csrf().disable()
                 // dont authenticate this particular request
-                .authorizeRequests().antMatchers("/authenticate", "/register").permitAll().
+                .authorizeRequests().antMatchers("/authenticate", "/register","/api/registeruser").permitAll().
                 // all other requests need to be authenticated
-                        anyRequest().authenticated().and().
+                anyRequest().authenticated().and().
                 // make sure we use stateless session; session won't be used to
                 // store user's state.
-                        exceptionHandling().authenticationEntryPoint(jwtAuthenticationEntryPoint).and().sessionManagement()
+                exceptionHandling().authenticationEntryPoint(jwtAuthenticationEntryPoint).and().sessionManagement()
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS);
 
         // Add a filter to validate the tokens with every request

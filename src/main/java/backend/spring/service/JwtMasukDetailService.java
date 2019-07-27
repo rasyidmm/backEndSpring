@@ -17,8 +17,6 @@ public class JwtMasukDetailService implements UserDetailsService {
 
     @Autowired
     private ServiceFac serviceFac;
-    @Autowired
-    private PasswordEncoder bcryptEncoder;
 
     @Override
     public UserDetails loadUserByUsername(String usename) throws UsernameNotFoundException {
@@ -29,11 +27,11 @@ public class JwtMasukDetailService implements UserDetailsService {
         return new org.springframework.security.core.userdetails.User(member.getUsernameLogin(),member.getPasswordLogin(),new ArrayList<>());
     }
 
-    public MasukModel save(MasukDto masuk){
-        MasukModel newMasuk = new MasukModel();
-        newMasuk.setUsernameLogin(masuk.getUsername());
-        newMasuk.setPasswordLogin(bcryptEncoder.encode(masuk.getPassword()));
-        return serviceFac.getMasukService().SaveOrUpdateMasuk(newMasuk);
-    }
+//    public MasukModel save(MasukDto masuk){
+//        MasukModel newMasuk = new MasukModel();
+//        newMasuk.setUsernameLogin(masuk.getUsername());
+//        newMasuk.setPasswordLogin(bcryptEncoder.encode(masuk.getPassword()));
+//        return serviceFac.getMasukService().SaveOrUpdateMasuk(newMasuk);
+//    }
 
 }

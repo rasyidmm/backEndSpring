@@ -1,42 +1,17 @@
-package backend.spring.model;
+package backend.spring.dto;
 
-import backend.spring.constants.TableConstants;
+public class RegisterUserDTO {
 
-import java.io.Serializable;
-import javax.persistence.*;
-
-@Entity
-//@JsonIgnoreProperties
-//@Table(name = TableConstants.TABLE_USER_MODEL)
-public class MemeberModel implements Serializable {
-
-    private static long serialVersionUID = 1L;
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = TableConstants.COLUMN_ID)
-    private Long id;
-    @Column(name = TableConstants.COLUMN_NAMA_DEPAN_USER)
     private String namaDepanUser;
-    @Column(name = TableConstants.COLUMN_NAMA_BELAKANG_USER)
     private String namaBelakangUser;
-    @Column(name = TableConstants.COLUMN_ALAMAT_USER)
     private String alamatUser;
-    @Column(name = TableConstants.COLUMN_NOHP_USER)
     private String noHpUser;
-    @Column(name = TableConstants.COLUMN_AGAMA_USER)
     private String agamaUser;
-    @Column(name = TableConstants.COLUMN_PENDIDIKAN_USER)
     private String pendidikanUser;
-    @Column(name = TableConstants.COLUMN_FOTO_UDER)
     private String fotoUser;
+    private String usernameLogin;
+    private String passwordLogin;
 
-    public static long getSerialVersionUID() {
-        return serialVersionUID;
-    }
-
-    public static void setSerialVersionUID(long serialVersionUID) {
-        MemeberModel.serialVersionUID = serialVersionUID;
-    }
 
     public String getNamaDepanUser() {
         return namaDepanUser;
@@ -94,12 +69,19 @@ public class MemeberModel implements Serializable {
         this.fotoUser = fotoUser;
     }
 
-
-    public Long getId() {
-        return id;
+    public String getUsernameLogin() {
+        return usernameLogin;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setUsernameLogin(String usernameLogin) {
+        this.usernameLogin = usernameLogin;
+    }
+
+    public String getPasswordLogin() {
+        return passwordLogin;
+    }
+
+    public void setPasswordLogin(String passwordLogin) {
+        this.passwordLogin = passwordLogin;
     }
 }

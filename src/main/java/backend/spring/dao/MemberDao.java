@@ -7,11 +7,11 @@ import java.util.List;
 public interface MemberDao {
     public List<MemeberModel> getAllMember();
 
-    public MemeberModel getMemberById(String id);
+    public MemeberModel getMemberById(Long id);
 
     public void SaveOrUpdateMember(MemeberModel k);
 
-    public void deleteMember(String id);
+    public void deleteMember(Long id);
 
     public void deleteMember(MemeberModel d);
 }
