@@ -1,5 +1,7 @@
-package backend.spring.security;
+package backend.spring.security.config;
 
+import backend.spring.security.JwtAuthenticationEntryPoint;
+import backend.spring.security.JwtRequestFilter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -47,14 +49,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         PasswordEncoder encoder =  new BCryptPasswordEncoder();
         return encoder;
     }
-//
-//    @Bean
-//    public PasswordEncoder passwordEncode() {
-//        PasswordEncoder encoder =  new BCryptPasswordEncoder();
-//        return encoder;
-////        return new BCryptPasswordEncoder();
-//    }
-
     @Bean
     @Override
     public AuthenticationManager authenticationManagerBean() throws Exception {

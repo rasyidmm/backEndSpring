@@ -1,4 +1,4 @@
-package backend.spring.util.response;
+package backend.spring.security;
 
 import java.io.Serializable;
 

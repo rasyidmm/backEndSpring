@@ -1,6 +1,6 @@
 package backend.spring.factory;
 
-import backend.spring.model.MasukModel;
+import backend.spring.security.service.JwtMasukDetailService;
 import backend.spring.service.MasukService;
 import backend.spring.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,11 +12,16 @@ public class ServiceFac {
     MemberService memberService;
     @Autowired
     MasukService masukService;
+    @Autowired
+    JwtMasukDetailService jwtMasukDetailService;
 
     public MemberService getMemberService() {
         return memberService;
     }
     public MasukService getMasukService(){
         return masukService;
+    }
+    public  JwtMasukDetailService getJwtMasukDetailService(){
+        return  jwtMasukDetailService;
     }
 }

@@ -1,9 +1,8 @@
-package backend.spring.controller;
+package backend.spring.security.controller;
 
-import backend.spring.factory.ServiceFac;
-import backend.spring.service.JwtMasukDetailService;
-import backend.spring.util.request.JwtRequest;
-import backend.spring.util.response.JwtResponse;
+import backend.spring.security.service.JwtMasukDetailService;
+import backend.spring.security.JwtRequest;
+import backend.spring.security.JwtResponse;
 import backend.spring.security.JwtTokenUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

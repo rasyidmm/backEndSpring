@@ -1,4 +1,4 @@
-package backend.spring.service;
+package backend.spring.security.service;
 
 import backend.spring.dto.MasukDto;
 import backend.spring.factory.ServiceFac;
