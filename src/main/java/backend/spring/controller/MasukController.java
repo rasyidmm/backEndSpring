@@ -34,22 +34,24 @@ public class MasukController {
     }
     @RequestMapping(value = "/api/registeruser",method = RequestMethod.POST)
     public ResponseEntity<?>regiterUser(@RequestBody RegisterUserDTO registerUserDTO)throws  Exception{
-        MemeberModel m = new MemeberModel();
+        if(serviceFac.getMasukService().getMasukModelByUsernameLogin(registerUserDTO.getUsernameLogin()) == null){
+            MemeberModel m = new MemeberModel();
+            m.setAgamaUser(registerUserDTO.getAgamaUser());
+            m.setAlamatUser(registerUserDTO.getAlamatUser());
+            m.setNoHpUser(registerUserDTO.getNoHpUser());
+            m.setPendidikanUser(registerUserDTO.getPendidikanUser());
+            m.setNamaDepanUser(registerUserDTO.getNamaDepanUser());
+            m.setNamaBelakangUser(registerUserDTO.getNamaBelakangUser());
+            m.setFotoUser(registerUserDTO.getFotoUser());
+            serviceFac.getMemberService().SaveOrUpdateMember(m);
+            MasukModel k = new MasukModel();
+            k.setId(serviceFac.getMemberService().getMemberById(m.getId()).getId());
+            k.setMemeberModel(m);
+            k.setPasswordLogin(bcryptEncoder.encode(registerUserDTO.getPasswordLogin()));
+            k.setUsernameLogin(registerUserDTO.getUsernameLogin());
+            serviceFac.getMasukService().SaveOrUpdateMasuk(k);
+        }
 
-        m.setAgamaUser(registerUserDTO.getAgamaUser());
-        m.setAlamatUser(registerUserDTO.getAlamatUser());
-        m.setNoHpUser(registerUserDTO.getNoHpUser());
-        m.setPendidikanUser(registerUserDTO.getPendidikanUser());
-        m.setNamaDepanUser(registerUserDTO.getNamaDepanUser());
-        m.setNamaBelakangUser(registerUserDTO.getNamaBelakangUser());
-        m.setFotoUser(registerUserDTO.getFotoUser());
-        serviceFac.getMemberService().SaveOrUpdateMember(m);
-        MasukModel k = new MasukModel();
-        k.setId(serviceFac.getMemberService().getMemberById(m.getId()).getId());
-        k.setMemeberModel(m);
-        k.setPasswordLogin(bcryptEncoder.encode(registerUserDTO.getPasswordLogin()));
-        k.setUsernameLogin(registerUserDTO.getUsernameLogin());
-        serviceFac.getMasukService().SaveOrUpdateMasuk(k);
         return ResponseEntity.ok(serviceFac.getMasukService());
     }
 }
